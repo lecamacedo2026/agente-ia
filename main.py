@@ -16,7 +16,9 @@ if "historico_financeiro" not in st.session_state:
     st.session_state.historico_financeiro = []
 
 # Formulário de entrada de dados
-valor = st.number_input("Digite o valor (R$): ", min_value=0.0, step=10.0)
+ valor = st.number_input(
+        "Digite o valor (R$): ", min_value=0.0, step=0.50, format="%.2f"
+    )
 tipo_movimentacao = st.radio("Selecione o tipo:", ["Receita", "Despesa"])
 data = st.date_input("Data do lançamento:")
 descricao = st.text_input(
@@ -32,19 +34,24 @@ if st.button("Enviar e Analisar"):
                 "Tipo": tipo_movimentacao,
                 "Descrição": descricao,
                 "Valor": valor,
+                "Data": data,
             }
         )
 
-        # Transforma o histórico em um texto estruturado para a IA ler
+      # Transforma o histórico em um DataFrame
         df_atual = pd.DataFrame(st.session_state.historico_financeiro)
+        # Transforma o DataFrame em texto estruturado para a IA ler
+        texto_financeiro = df_atual.to_string(index=False)
+       
+   # Cria a mensagem detalhada combinando o histórico com o comando
 
-        # Cria a mensagem detalhada combinando o histórico com o comando
-        prompt_usuario = f"""
-        Aqui está o meu histórico atualizado de movimentações financeiras:
-        {df_atual.to_string(index=False)}
-        
-        Por favor, calcule o meu saldo atual (Receitas menos Despesas) e faça uma análise direta sobre a minha saúde financeira atual.
-        """
+prompt_usuario = f"""
+Aqui está o histórico atualizado de movimentações financeiras:
+
+{texto_financeiro}
+
+Calcule o saldo atual e faça uma análise direta sobre a minha saúde financeira atual.
+"""
 
         # Chamada para a API da Groq
         resposta = client.chat.completions.create(
