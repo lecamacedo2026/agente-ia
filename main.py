@@ -155,7 +155,7 @@ if st.session_state.historico_financeiro:
 
     st.divider()
 
-    st.subheader("📋 Movimentações Lançadas")
+    st.subheader("📋 Movimentações Lançados")
 
     df_exibicao = pd.DataFrame(
         st.session_state.historico_financeiro
