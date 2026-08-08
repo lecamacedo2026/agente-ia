@@ -32,25 +32,25 @@ if "historico_financeiro" not in st.session_state:
 # FORMULÁRIO DE ENTRADA DE DADOS
 # ============================================================
 
-valor = st.number_input(
-    "Digite o valor (R$): ",
-    min_value=0.0,
-    step=0.50,
-    format="%.2f"
-)
-
-tipo_movimentacao = st.radio(
-    "Selecione o tipo:",
-    ["Receita", "Despesa"]
-)
-
-data = st.date_input(
-    "Data do lançamento:"
-)
-
-descricao = st.text_input(
-    "Descrição/Categoria (ex: Salário, Aluguel, Supermercado):"
-)
+    valor = st.number_input(
+        "Digite o valor (R$): ",
+        min_value=0.0,
+        step=0.50,
+        format="%.2f"
+    )
+    
+    tipo_movimentacao = st.radio(
+        "Selecione o tipo:",
+        ["Receita", "Despesa"]
+    )
+    
+    data = st.date_input(
+        "Data do lançamento:"
+    )
+    
+    descricao = st.text_input(
+        "Descrição/Categoria (ex: Salário, Aluguel, Supermercado):"
+    )
 
 
 # ============================================================
