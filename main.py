@@ -1,16 +1,17 @@
 from groq import Groq
 import streamlit as st 
-
-
+import time
+import os
 
 # pip install groq 
 
-client = Groq (
-api_key = "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"
+client = Groq(
+    api_key=os.environ.get("GROQ_API_KEY"),
 )
 
-st.title("Conversa com o Piloto") 
+st.title("Conversa com um Psicanalista") 
 pergunta  = st.text_input('pergunta:')
+
 if st.button('enviar'):
     # if pergunta.strip():
         reposta =  client.chat.completions.create(
@@ -20,7 +21,7 @@ if st.button('enviar'):
         messages=[
         {
         'role':'system',
-        'content':"Você é um piloto de avião."
+        'content':"Você é especialista em psicanálise e faz terapias com pacientes."
         },
         {
             'role':'user',
@@ -31,3 +32,5 @@ if st.button('enviar'):
         )
 
         st.text(reposta.choices[0].message.content)
+        time.sleep(0)
+   
