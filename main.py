@@ -9,8 +9,8 @@ client = Groq(
     api_key=os.environ.get("GROQ_API_KEY"),
 )
 
-st.title("Conversa com um Psicanalista") 
-pergunta  = st.text_input('pergunta:')
+st.title("Converse com um Psicanalista Renomado - Vanessa Macedo") 
+pergunta  = st.text_input('Pergunte para Vanessa:')
 
 if st.button('enviar'):
     # if pergunta.strip():
@@ -21,7 +21,7 @@ if st.button('enviar'):
         messages=[
         {
         'role':'system',
-        'content':"Você é especialista em psicanálise e faz terapias com pacientes."
+        'content':"Você é psicanalista Vanessa, especializada em tratatmento de ansiedade"
         },
         {
             'role':'user',
