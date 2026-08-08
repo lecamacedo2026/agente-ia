@@ -18,6 +18,7 @@ if "historico_financeiro" not in st.session_state:
 # Formulário de entrada de dados
 valor = st.number_input("Digite o valor (R$): ", min_value=0.0, step=10.0)
 tipo_movimentacao = st.radio("Selecione o tipo:", ["Receita", "Despesa"])
+data = st.date_input("Data do lançamento:")
 descricao = st.text_input(
     "Descrição/Categoria (ex: Salário, Aluguel, Supermercado):"
 )
