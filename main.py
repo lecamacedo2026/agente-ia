@@ -36,14 +36,13 @@ if st.button("Enviar e Analisar"):
             }
         )
 
-      # Transforma o histórico em um DataFrame
+        # Transforma o histórico em um DataFrame
         df_atual = pd.DataFrame(st.session_state.historico_financeiro)
         # Transforma o DataFrame em texto estruturado para a IA ler
         texto_financeiro = df_atual.to_string(index=False)
        
-   # Cria a mensagem detalhada combinando o histórico com o comando
-
-prompt_usuario = f"""
+        # Cria a mensagem detalhada combinando o histórico com o comando
+        prompt_usuario = f"""
 Aqui está o histórico atualizado de movimentações financeiras:
 
 {texto_financeiro}
