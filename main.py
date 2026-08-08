@@ -31,7 +31,6 @@ if "historico_financeiro" not in st.session_state:
 # ============================================================
 # FORMULÁRIO DE ENTRADA DE DADOS
 # ============================================================
-
     valor = st.number_input(
         "Digite o valor (R$): ",
         min_value=0.0,
@@ -52,6 +51,7 @@ if "historico_financeiro" not in st.session_state:
         "Descrição/Categoria (ex: Salário, Aluguel, Supermercado):"
     )
 
+    
 
 # ============================================================
 # BOTÃO PARA ADICIONAR TRANSAÇÃO E ACIONAR A IA
