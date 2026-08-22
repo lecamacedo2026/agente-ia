@@ -10,11 +10,13 @@ st.set_page_config(page_title="Análise Financeira Pessoal", page_icon="📊")
 # INICIALIZAÇÃO DO CLIENTE GROQ
 # ============================================================
 # O SDK da Groq busca automaticamente a variável GROQ_API_KEY no ambiente
-client = Groq(
+api_key = os.environ.get("GROQ_API_KEY")
 
-    api_key=os.environ.get("GROQ_API_KEY"),
+if not api_key:
+    st.error("⚠️ A variável de ambiente GROQ_API_KEY não foi configurada no Render!")
+    st.stop()
 
-)
+client = Groq(api_key=api_key)
 
 # ============================================================
 # TÍTULO DO APP
